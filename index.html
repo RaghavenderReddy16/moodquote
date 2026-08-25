@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodQuote</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 8px;
+            color: #5b4b9a;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        .moods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mood {
+            border: none;
+            background: #f5f3ff;
+            border-radius: 18px;
+            padding: 18px 10px;
+            cursor: pointer;
+            transition: 0.25s;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .mood .emoji {
+            display: block;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .mood:hover {
+            transform: translateY(-5px);
+            background: #e9e4ff;
+            box-shadow: 0 8px 20px rgba(91, 75, 154, 0.15);
+        }
+
+        .quote-box {
+            display: none;
+            background: #f8f6ff;
+            border-radius: 20px;
+            padding: 30px 25px;
+            margin-top: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .quote-box.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .quote {
+            font-size: 21px;
+            line-height: 1.6;
+            font-style: italic;
+            color: #444;
+        }
+
+        .mood-result {
+            margin-top: 15px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .new-quote {
+            margin-top: 20px;
+            padding: 12px 22px;
+            border: none;
+            border-radius: 25px;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .new-quote:hover {
+            background: #5548c8;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 30px 18px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .moods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quote {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>✨ MoodQuote</h1>
+        <p class="subtitle">A little quote for how you feel.</p>
+
+        <h2>How are you feeling?</h2>
+
+        <div class="moods">
+            <button class="mood" onclick="showQuote('happy')">
+                <span class="emoji">😊</span>
+                Happy
+            </button>
+
+            <button class="mood" onclick="showQuote('sad')">
+                <span class="emoji">😔</span>
+                Sad
+            </button>
+
+            <button class="mood" onclick="showQuote('stressed')">
+                <span class="emoji">😰</span>
+                Stressed
+            </button>
+
+            <button class="mood" onclick="showQuote('angry')">
+                <span class="emoji">😡</span>
+                Angry
+            </button>
+
+            <button class="mood" onclick="showQuote('tired')">
+                <span class="emoji">😴</span>
+                Tired
+            </button>
+
+            <button class="mood" onclick="showQuote('motivated')">
+                <span class="emoji">💪</span>
+                Motivated
+            </button>
+        </div>
+
+        <div class="quote-box" id="quoteBox">
+            <div class="quote" id="quote"></div>
+            <div class="mood-result" id="moodResult"></div>
+            <button class="new-quote" onclick="showAnotherQuote()">
+                ✨ Another Quote
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        const quotes = {
+
+            happy: [
+                "Happiness grows when you share it with others.",
+                "Enjoy the little moments. They become the beautiful memories.",
+                "Let your happiness be louder than your worries."
+            ],
+
+            sad: [
+                "It's okay to have difficult days. Better days will come.",
+                "You don't have to be strong every moment. Give yourself time.",
+                "Even the darkest night eventually gives way to morning."
+            ],
+
+            stressed: [
+                "Take a deep breath. You don't have to solve everything at once.",
+                "Slow down. One step at a time is still progress.",
+                "Your peace is more important than perfection."
+            ],
+
+            angry: [
+                "Pause before you react. A calm mind sees more clearly.",
+                "You don't have to respond to every emotion immediately.",
+                "Let calmness be stronger than anger."
+            ],
+
+            tired: [
+                "Rest is not giving up. Sometimes rest is what helps you continue.",
+                "You have done enough for today. Tomorrow is another chance.",
+                "Take a break. Even the strongest people need to recharge."
+            ],
+
+            motivated: [
+                "Believe in yourself and keep moving forward.",
+                "Small steps every day can create incredible results.",
+                "Your future is built by what you do today."
+            ]
+        };
+
+        let currentMood = "";
+
+        function showQuote(mood) {
+            currentMood = mood;
+
+            const moodQuotes = quotes[mood];
+            const randomIndex = Math.floor(Math.random() * moodQuotes.length);
+
+            document.getElementById("quote").textContent =
+                "“" + moodQuotes[randomIndex] + "”";
+
+            document.getElementById("moodResult").textContent =
+                "A quote for your " + mood + " mood ✨";
+
+            document.getElementById("quoteBox").classList.add("show");
+        }
+
+        function showAnotherQuote() {
+            if (currentMood) {
+                showQuote(currentMood);
+            }
+        }
+    </script>
+
+</body>
+</html>
