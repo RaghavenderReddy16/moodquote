@@ -267,12 +267,26 @@
                 showQuote(currentMood);
             }
         }
+   function showDonationQR() {
+    document.getElementById("donationQR").style.display = "block";
+}
     </script>
 <a href="about.html" class="about-button">
     👋 About Me
 </a>
 
-</body>
-</html>
+<div class="donation-section">
+    <h2>💙 Make Someone's Day Better</h2>
+    <p>A little kindness can go a long way.</p>
+
+    <button onclick="showDonationQR()">
+        ✨ Click here to make someone's day better
+    </button>
+
+    <div id="donationQR" style="display: none;">
+        <p>Scan the QR code to contribute 💙</p>
+        <img src="donation-qr.png" alt="Donation QR Code">
+    </div>
+</div>
 </body>
 </html>
