@@ -209,6 +209,84 @@
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
+  .donation-card {
+    max-width: 650px;
+    margin: 35px auto;
+    padding: 35px 25px;
+    text-align: center;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.12),
+        rgba(255, 255, 255, 0.04)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(12px);
+}
+
+.donation-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.donation-card h2 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.donation-card > p {
+    margin-bottom: 25px;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.donation-button {
+    display: inline-block;
+    padding: 13px 25px;
+
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 50px;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.donation-button:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.qr-message {
+    margin: 25px 0 15px;
+    opacity: 0.8;
+}
+
+.qr-box {
+    display: inline-block;
+    padding: 15px;
+    background: white;
+    border-radius: 18px;
+}
+
+.qr-box img {
+    display: block;
+    width: 220px;
+    max-width: 100%;
+}
     </style>
 </head>
 
@@ -343,18 +421,29 @@
     </a>
 </div>
 
-<div class="donation-section">
-    <h2>✨ Make Someone Smile Today</h2>
-    <p>You never know how far a small act of kindness can go.</p>
+<div class="donation-card">
+    <div class="donation-icon">💙</div>
 
-    <button onclick="showDonationQR()">
-        💙 Tap here to spread some kindness
+    <h2>Make Someone Smile Today</h2>
+
+    <p>
+        You never know how far a small act of kindness can go.
+    </p>
+
+    <button onclick="showDonationQR()" class="donation-button">
+        ✨ Tap here to spread some kindness
     </button>
 
     <div id="donationQR" style="display: none;">
-        <p>Every little bit of kindness matters. 💙</p>
-        <img src="donation-qr.jpeg" alt="Payment QR Code">
+        <p class="qr-message">
+            Every little bit of kindness matters. 💙
+        </p>
+
+        <div class="qr-box">
+            <img src="donation-qr.jpeg" alt="Payment QR Code">
+        </div>
     </div>
+</div>
 </div>
 </div>
 </body>
