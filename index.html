@@ -151,6 +151,64 @@
                 font-size: 18px;
             }
         }
+        .about-card {
+    max-width: 650px;
+    margin: 35px auto;
+    padding: 35px 25px;
+    text-align: center;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.12),
+        rgba(255, 255, 255, 0.04)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(12px);
+}
+
+.about-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.about-card h2 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.about-card p {
+    margin-bottom: 25px;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.about-button {
+    display: inline-block;
+    padding: 13px 25px;
+
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.about-button:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
     </style>
 </head>
 
@@ -271,9 +329,19 @@
     document.getElementById("donationQR").style.display = "block";
 }
     </script>
-<a href="about.html" class="about-button">
-    👋 About Me
-</a>
+<div class="about-card">
+    <div class="about-icon">👋</div>
+
+    <h2>Get to Know Me</h2>
+
+    <p>
+        Curious about who I am, what I do, and where I'm headed?
+    </p>
+
+    <a href="about.html" class="about-button">
+        ✨ Explore My Story
+    </a>
+</div>
 
 <div class="donation-section">
     <h2>✨ Make Someone Smile Today</h2>
